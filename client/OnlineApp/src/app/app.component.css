@@ -1,0 +1,17 @@
+.page_navigator {
+    cursor: pointer;
+}
+
+.navbar {
+    padding: 0.5rem 13rem;
+}
+
+li {
+    cursor: pointer;
+    outline: 0;
+    box-shadow: none;
+}
+
+.page_content_body {
+    padding: 0.5rem 13rem;
+}

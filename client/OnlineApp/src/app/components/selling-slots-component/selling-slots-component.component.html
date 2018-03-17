@@ -1,0 +1,30 @@
+<h3>Selling Slots</h3>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Address</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let slot of slots">
+            <th scope="row">{{slot.number}}</th>
+            <td>{{slot.address}}</td>
+            <td>
+                <span *ngIf="!slot.isMySlot || slot.availableForSale">{{slot.price}} Ξ</span>
+            </td>
+            <td>
+                <button *ngIf="!slot.isMySlot && slot.availableForSale" type="button" class="btn btn-outline-success" (click)="buy(slot.id)">Buy</button>
+                <div class="input-group" *ngIf="slot.isMySlot && !slot.availableForSale" style="width: 30%">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-primary" type="button" (click)="sell(slot.id, slot.price)" [disabled]="!slot.price">Sell</button>
+                    </div>
+                    <input [(ngModel)]="slot.price" type="text" class="form-control" placeholder="Price" aria-label="" aria-describedby="basic-addon1">
+                </div>
+                <button *ngIf="slot.isMySlot && slot.availableForSale" type="button" class="btn btn-outline-info"  (click)="cancelSell(slot.id)" >Cancel</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
